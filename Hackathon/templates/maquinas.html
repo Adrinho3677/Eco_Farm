@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor - Máquinas</title>
+    <link rel="stylesheet" href="{% static 'css/maquinas.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Máquinas Agrícolas</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-card">
+            <h2>Cadastrar Máquina Agrícola</h2>
+            <form action="{% url 'maquinas' %}" method="POST" id="form-maquina">
+
+                {% csrf_token %}
+
+                <label for="maquina">Máquina Agrícola</label>
+                <select id="tipo_maquina" name="tipo_maquina" required>
+                    <option value="" selected>Selecione o Tipo de Máquina</option>
+                    <option value="Trator" >Trator</option>
+                    <option value="Colheitadeira">Colheitadeira</option>
+                    <option value="Plantadeira">Plantadeira</option>
+                    <option value="Pulverizador">Pulverizador</option>
+                </select>
+
+                <label for="nome">Nome da Máquina</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo" required>
+
+                <label for="ano">Ano de Fabricação</label>
+                <input type="text" id="ano" name="ano" required>
+
+                <button type="submit">Cadastrar Máquina</button>
+            </form>
+        </div>
+      
+        <div class="form-card">
+
+            <h2>Máquinas Cadastradas</h2>
+
+            <ul id="lista-maquinas">
+
+                {% for i in dados %}
+                    <li>{{ i.nome }} | {{ i.tipo }} | {{i.ano}}  |
+                        <button><a class="links" href="{% url 'excluir_maquina' i.id %}">Excluir</a></button>
+                        <button><a class="links" href="{% url 'editar_maquina' i.id %}">Editar</a></button>
+                    </li>
+                {% endfor %}
+            
+            </ul>
+
+            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

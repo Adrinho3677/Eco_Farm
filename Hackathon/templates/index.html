@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFarm - Bem-Vindo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bem-Vindo!</h1>
+    </header>
+    <div class="container">
+        <div class="welcome-card">
+            <img src="{% static 'img/logo.png' %}" alt="">
+            <h2>Olá, Agricultor!</h2>
+            <div class="welcome-buttons">
+                <a href="{% url 'funcionarios' %}" class="btn">Ir para o Painel de Controle dos funcionarios</a>
+                <a href="{% url 'maquinas' %}" class="btn">Ir para o Painel de Controle das maquinas</a>
+                <a href="{% url 'sementes' %}" class="btn">Ir para o controle de sementes</a>
+                <a href="{% url 'tarefas_funcionario' %}" class="btn">Ir para o controle de tarefas</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Tarefas Agendadas -->
+    <div class="form-card">
+        <h2>Tarefas Agendadas</h2>
+        <ul id="lista-tarefas">
+            <!-- As tarefas agendadas aparecerão aqui -->
+        </ul>
+
+        <button> <a class="links" href="{% url 'sair' %}">Sair</a> </button>
+
+    </div>
+</body>
+</html>

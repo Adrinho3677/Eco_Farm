@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor</title>
+    <link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Cadastro de Funcionários</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário de Cadastro de Funcionário -->
+        <div class="form-card">
+
+            <h2>Cadastrar Funcionário</h2>
+
+            <form action="{% url 'funcionarios' %}" method="POST" id="form_funcionario">
+
+                {% csrf_token %}
+
+                <label for="nome">Nome do Funcionário</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="data-nascimento">Data de Nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" name="cargo" required>
+
+                <button type="submit">Cadastrar Funcionário</button>
+            </form>
+        </div>
+
+        <!-- Lista de Funcionários -->
+        <div class="form-card">
+            
+            <h2>Funcionários Cadastrados</h2>
+
+            <ul>
+                {% for i in dados %}
+                    <li>{{ i.nome }} | {{ i.cargo }} |
+                        <button><a class="links" href="{% url 'excluir_funcionario' i.id %}">Excluir</a></button>
+                        <button><a class="links" href="{% url 'editar_funcionario' i.id %}">Editar</a></button>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

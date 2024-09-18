@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor</title>
+    <link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Edição de Máquina</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário de Agregação de Tarefa -->
+        <div class="form-card">
+
+            <h2>Agendar Tarefa de Funcionário</h2>
+
+            <form action="{% url 'editar_tarefa_funcionario' tarefa.id %}" method="POST" id="form-tarefa">
+
+                {% csrf_token %}
+
+                <label for="funcionario">Funcionário</label>
+                <select name="funcionario" id="funcionario" required>
+                    <option value="{{ tarefa.funcionario.id }}" selected>{{ tarefa.funcionario.nome }}</option>
+                    {% for i in funcionario %}
+                    <option value="{{ i.id }}">{{ i.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="tarefa">Tarefa</label>
+                <textarea id="tarefa" value="{{tarefa.descricao}}" name="tarefa" rows="4" placeholder="Descrição da Tarefa" required></textarea>
+
+                <p>Data de Ínicio da Tarefa: {{tarefa.data_inicio}}</p>
+                <label for="data-tarefa">Data da Tarefa</label>
+                <input type="date" id="data_tarefa" name="data_tarefa" required>
+
+                <button type="submit">Agendar Tarefa</button>
+
+            </form>
+        </div>
+
+        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

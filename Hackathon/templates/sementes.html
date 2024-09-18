@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor - Sementes</title>
+    <link rel="stylesheet" href="{% static 'css/sementes.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Cadastro de Sementes</h1>
+    </header>
+
+    <div class="container">
+        <div class="form-card">
+            <h2>Cadastrar Semente</h2>
+            <form action="{% url 'sementes' %}" method="POST" id="form-semente">
+
+                {% csrf_token %}
+
+                <label for="tipo_semente">Tipo de Semente</label>
+                <select id="tipo_semente" name="tipo_semente" required>
+                    <option value="" selected>Selecione o Tipo de Semente</option>
+                    <option value="Milho">Milho</option>
+                    <option value="Soja">Soja</option>
+                </select>
+
+                <label for="quantidade">Quantidade (em sacas)</label>
+                <input type="number" id="quantidade" name="quantidade" min="1" required>
+
+                <button type="submit">Cadastrar Semente</button>
+
+            </form>
+        </div>
+
+      
+        <div class="form-card">
+
+            <h2>Sementes Cadastradas</h2>
+
+            <ul id="lista-sementes">
+           
+                {% for i in dados %}
+                    <li>{{ i.tipo }} | {{ i.quantidade }} Sacas |
+                        <button><a class="links" href="{% url 'excluir_semente' i.id %}">Excluir</a></button>
+                        <button><a class="links" href="{% url 'editar_semente' i.id %}">Editar</a></button>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

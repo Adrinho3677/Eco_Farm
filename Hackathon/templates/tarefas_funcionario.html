@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor</title>
+    <link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Cadastro de Funcionários</h1>
+    </header>
+
+        <!-- Formulário de Agregação de Tarefa -->
+        <div class="form-card">
+
+            <h2>Agendar Tarefa de Funcionário</h2>
+
+            <form action="{% url 'tarefas_funcionario' %}" method="POST" id="form-tarefa">
+
+                {% csrf_token %}
+
+                <label for="funcionario">Funcionário</label>
+                <select name="funcionario" id="funcionario" required>
+                    {% for i in funcionario %}
+                    <option value="{{ i.id }}">{{ i.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="tarefa">Tarefa</label>
+                <textarea id="tarefa" name="tarefa" rows="4" placeholder="Descrição da Tarefa" required></textarea>
+
+                <label for="data-tarefa">Data da Tarefa</label>
+                <input type="date" id="data_tarefa" name="data_tarefa" required>
+
+                <button type="submit">Agendar Tarefa</button>
+
+            </form>
+        </div>
+
+        <!-- Lista de Funcionários -->
+        <div class="form-card">
+            <h2>Tarefas de Funcionários</h2>
+            <!-- template.html -->
+            <ul>
+                {% for i in tarefa %}
+                    <li>{{ i.funcionario.nome }} | {{ i.descricao }} |
+                        <button><a class="links" href="{% url 'tarefas_funcionario_excluir' i.id %}">Excluir</a></button>
+                        <button><a class="links" href="{% url 'editar_tarefa_funcionario' i.id %}">Editar</a></button>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFarm</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>EcoFarm - Entrar</h1>
+    </header>
+    <div class="container">
+        <div class="form-card">
+
+            <h2>Entre </h2>
+
+            <form action="{% url 'entrar' %}" method="POST">
+
+                {% csrf_token %}
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="data-plantio">Senha:</label>
+                <input type="password" id="senha" name="senha" required>             
+
+                <button type="submit" class="btn">Entrar</button>
+
+                <button> <a class="links" href="{% url 'cadastro' %}">Cadastre-se </a> </button>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

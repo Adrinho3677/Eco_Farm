@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor</title>
+    <link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Edição de Máquina</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário de Edição de Funcionário -->
+        <div class="form-card">
+
+            <h2>Editar Máquina</h2>
+
+            <form action="{% url 'editar_semente' semente.id %}" method="POST" id="form_semente">
+
+                {% csrf_token %}
+
+                <label for="tipo_semente">Tipo de Semente</label>
+                <select id="tipo_semente" name="tipo_semente" required>
+                    <option value="{{semente.tipo}}" selected>{{semnete.tipo}}</option>
+                    <option value="Milho">Milho</option>
+                    <option value="Soja">Soja</option>
+                </select>
+
+                <p> Quantidade de Sacas: {{semente.quantidade}}</p>
+                <label for="quantidade">Quantidade (em sacas)</label>
+                <input type="number" id="quantidade" name="quantidade" min="1" required>
+
+                <button type="submit">Cadastrar Semente</button>
+
+            </form>
+
+        </div>
+
+        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

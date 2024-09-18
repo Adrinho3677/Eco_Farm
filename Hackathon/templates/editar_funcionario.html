@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Agricultor</title>
+    <link rel="stylesheet" href="{% static 'css/styles_2.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Dashboard do Agricultor - Editar de Funcionários</h1>
+    </header>
+
+    <div class="container">
+        <!-- Formulário de Edição de Funcionário -->
+        <div class="form-card">
+
+            <h2>Editar Funcionário</h2>
+
+            <form action="{% url 'editar_funcionario' funcionario.id %}" method="POST" id="form_funcionario">
+
+                {% csrf_token %}
+
+                <label for="nome">Nome do Funcionário</label>
+                <input type="text" value="{{funcionario.nome}}" id="nome" name="nome" required>
+
+                <label for="data-nascimento">Data de Nascimento</label>
+
+                <input type="date" value="{{ funcionario.nascimento|date:'d/m/Y' }}" id="data_nascimento" name="nascimento" placeholder="dd/mm/YYYY" required>
+
+                <p>Data de Nascimento: {{ funcionario.nascimento|date:"d/m/Y" }}</p>
+                <label for="cargo">Cargo</label>
+                <input type="text" value="{{funcionario.cargo}}" id="cargo" name="cargo" required>
+
+                <button type="submit">Editar Funcionário</button>
+            </form>
+
+        </div>
+
+        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
