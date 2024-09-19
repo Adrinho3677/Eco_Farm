@@ -34,6 +34,7 @@
 
                 <button type="submit">Cadastrar Funcionário</button>
             </form>
+
         </div>
 
         <!-- Lista de Funcionários -->
@@ -44,15 +45,15 @@
             <ul>
                 {% for i in dados %}
                     <li>{{ i.nome }} | {{ i.cargo }} |
-                        <button><a class="links" href="{% url 'excluir_funcionario' i.id %}">Excluir</a></button>
-                        <button><a class="links" href="{% url 'editar_funcionario' i.id %}">Editar</a></button>
+                        <a class="btn" href="{% url 'excluir_funcionario' i.id %}">Demitir</a>
+                        <a class="btn" href="{% url 'editar_funcionario' i.id %}">Editar</a>
                     </li>
                 {% endfor %}
             </ul>
 
-            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
-
         </div>
+
+        <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>
 
     </div>
 

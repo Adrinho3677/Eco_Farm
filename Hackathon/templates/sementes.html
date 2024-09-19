@@ -44,16 +44,17 @@
            
                 {% for i in dados %}
                     <li>{{ i.tipo }} | {{ i.quantidade }} Sacas |
-                        <button><a class="links" href="{% url 'excluir_semente' i.id %}">Excluir</a></button>
-                        <button><a class="links" href="{% url 'editar_semente' i.id %}">Editar</a></button>
+                        <a class="btn" href="{% url 'excluir_semente' i.id %}">Excluir</a>
+                        <a class="btn" href="{% url 'editar_semente' i.id %}">Editar</a>
                     </li>
                 {% endfor %}
 
             </ul>
 
-            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
-
         </div>
+
+        <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>
+
     </div>
     
     <script src="script.js"></script>

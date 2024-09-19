@@ -37,5 +37,7 @@ urlpatterns = [
     path('tarefas_funcionario', tarefas_funcionario, name='tarefas_funcionario'),
     path('tarefas_funcionario_excluir/<int:id>', tarefas_funcionario_excluir, name='tarefas_funcionario_excluir'),
     path('editar_tarefa_funcionario/<int:id>', editar_tarefa_funcionario, name='editar_tarefa_funcionario'),
-
+    path('tarefas_maquina', tarefas_maquina, name='tarefas_maquina'),
+    path('tarefas_maquina_excluir/<int:id>', tarefas_maquina_excluir, name='tarefas_maquina_excluir'),
+    path('editar_tarefa_maquina/<int:id>', editar_tarefa_maquina, name='editar_tarefa_maquina'),
 ]

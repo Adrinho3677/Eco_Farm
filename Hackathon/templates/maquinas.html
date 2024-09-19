@@ -20,7 +20,7 @@
 
                 {% csrf_token %}
 
-                <label for="maquina">Máquina Agrícola</label>
+                <label for="maquina">Tipo de Máquina Agrícola</label>
                 <select id="tipo_maquina" name="tipo_maquina" required>
                     <option value="" selected>Selecione o Tipo de Máquina</option>
                     <option value="Trator" >Trator</option>
@@ -50,16 +50,16 @@
 
                 {% for i in dados %}
                     <li>{{ i.nome }} | {{ i.tipo }} | {{i.ano}}  |
-                        <button><a class="links" href="{% url 'excluir_maquina' i.id %}">Excluir</a></button>
-                        <button><a class="links" href="{% url 'editar_maquina' i.id %}">Editar</a></button>
+                        <a class="btn" href="{% url 'excluir_maquina' i.id %}">Excluir</a>
+                        <a class="btn" href="{% url 'editar_maquina' i.id %}">Editar</a>
                     </li>
                 {% endfor %}
             
             </ul>
 
-            <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
-
         </div>
+
+        <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>
 
     </div>
 

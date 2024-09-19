@@ -17,22 +17,19 @@
             <img src="{% static 'img/logo.png' %}" alt="">
             <h2>Olá, Agricultor!</h2>
             <div class="welcome-buttons">
-                <a href="{% url 'funcionarios' %}" class="btn">Ir para o Painel de Controle dos funcionarios</a>
-                <a href="{% url 'maquinas' %}" class="btn">Ir para o Painel de Controle das maquinas</a>
-                <a href="{% url 'sementes' %}" class="btn">Ir para o controle de sementes</a>
-                <a href="{% url 'tarefas_funcionario' %}" class="btn">Ir para o controle de tarefas</a>
+                <a href="{% url 'funcionarios' %}" class="btn">Ir para o Painel de Controle dos Funcionarios</a>
+                <a href="{% url 'maquinas' %}" class="btn">Ir para o Painel de Controle das Máquinas</a>
+                <a href="{% url 'sementes' %}" class="btn">Ir para o Painel de Controle de Sementes</a>
+                <a href="{% url 'tarefas_funcionario' %}" class="btn">Ir para o Painel de Controle das Tarefas de Funcionários</a>
+                <a href="{% url 'tarefas_maquina' %}" class="btn">Ir para o Painel de Controle das Tarefas de Máquinas</a>
             </div>
         </div>
+
     </div>
 
-    <!-- Lista de Tarefas Agendadas -->
-    <div class="form-card">
-        <h2>Tarefas Agendadas</h2>
-        <ul id="lista-tarefas">
-            <!-- As tarefas agendadas aparecerão aqui -->
-        </ul>
+    <div>
 
-        <button> <a class="links" href="{% url 'sair' %}">Sair</a> </button>
+        <a class="btn" href="{% url 'sair' %}">Sair</a>
 
     </div>
 </body>

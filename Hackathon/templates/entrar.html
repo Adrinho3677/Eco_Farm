@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+
     <header>
         <h1>EcoFarm - Entrar</h1>
     </header>
+
     <div class="container">
+
         <div class="form-card">
 
-            <h2>Entre </h2>
+            <h2> Entre </h2>
 
             <form action="{% url 'entrar' %}" method="POST">
 
@@ -29,10 +32,14 @@
 
                 <button type="submit" class="btn">Entrar</button>
 
-                <button> <a class="links" href="{% url 'cadastro' %}">Cadastre-se </a> </button>
+                <a class="btn" href="{% url 'cadastro' %}"> Cadastre-se </a>
 
             </form>
+
         </div>
+
     </div>
+
 </body>
+
 </html>

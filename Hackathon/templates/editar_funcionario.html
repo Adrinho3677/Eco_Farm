@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>Dashboard do Agricultor - Editar de Funcionários</h1>
+        <h1>Dashboard do Agricultor - Edição de Funcionário</h1>
     </header>
 
     <div class="container">
@@ -26,11 +26,10 @@
                 <label for="nome">Nome do Funcionário</label>
                 <input type="text" value="{{funcionario.nome}}" id="nome" name="nome" required>
 
+                <p>Data de Nascimento: {{ funcionario.nascimento|date:"d/m/Y" }}</p>
                 <label for="data-nascimento">Data de Nascimento</label>
-
                 <input type="date" value="{{ funcionario.nascimento|date:'d/m/Y' }}" id="data_nascimento" name="nascimento" placeholder="dd/mm/YYYY" required>
 
-                <p>Data de Nascimento: {{ funcionario.nascimento|date:"d/m/Y" }}</p>
                 <label for="cargo">Cargo</label>
                 <input type="text" value="{{funcionario.cargo}}" id="cargo" name="cargo" required>
 
@@ -39,7 +38,7 @@
 
         </div>
 
-        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+        <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>
 
     </div>
 

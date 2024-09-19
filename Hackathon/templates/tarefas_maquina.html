@@ -10,21 +10,21 @@
 </head>
 <body>
     <header>
-        <h1>Dashboard do Agricultor - Cadastro de Tarefas de Funcionários</h1>
+        <h1>Dashboard do Agricultor - Cadastro de Tarefas de Máquinas</h1>
     </header>
 
         <!-- Formulário de Agregação de Tarefa -->
         <div class="form-card">
 
-            <h2>Agendar Tarefa de Funcionário</h2>
+            <h2>Agendar Tarefa de Máquina</h2>
 
-            <form action="{% url 'tarefas_funcionario' %}" method="POST" id="form-tarefa">
+            <form action="{% url 'tarefas_maquina' %}" method="POST" id="form-tarefa">
 
                 {% csrf_token %}
 
-                <label for="funcionario">Funcionário</label>
-                <select name="funcionario" id="funcionario" required>
-                    {% for i in funcionario %}
+                <label for="maquina">Máquina</label>
+                <select name="maquina" id="maquina" required>
+                    {% for i in maquina %}
                     <option value="{{ i.id }}">{{ i.nome }}</option>
                     {% endfor %}
                 </select>
@@ -42,13 +42,13 @@
 
         <!-- Lista de Funcionários -->
         <div class="form-card">
-            <h2>Tarefas de Funcionários</h2>
+            <h2>Tarefas de Máquinas</h2>
             <!-- template.html -->
             <ul>
                 {% for i in tarefa %}
-                    <li>{{ i.funcionario.nome }} | {{ i.descricao }} |
-                        <a class="btn" href="{% url 'tarefas_funcionario_excluir' i.id %}">Excluir</a>
-                        <a class="btn" href="{% url 'editar_tarefa_funcionario' i.id %}">Editar</a>
+                    <li>{{ i.maquina.nome }} | {{ i.descricao }} |
+                        <a class="btn" href="{% url 'tarefas_maquina_excluir' i.id %}">Excluir</a>
+                        <a class="btn" href="{% url 'editar_tarefa_maquina' i.id %}">Editar</a>
                     </li>
                 {% endfor %}
             </ul>

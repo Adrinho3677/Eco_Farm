@@ -52,15 +52,17 @@ textarea {
     resize: vertical;
 }
 
-button {
+button, .btn {
     background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
+    display: inline-block;
     margin-top: 10px;
-    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 button:hover {
@@ -79,8 +81,4 @@ ul li {
 
 ul li:last-child {
     border-bottom: none;
-}
-
-.links {
-    text-decoration: none;
 }

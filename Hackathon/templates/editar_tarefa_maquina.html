@@ -10,23 +10,23 @@
 </head>
 <body>
     <header>
-        <h1>Dashboard do Agricultor - Edição de Tarefa de Funcionário</h1>
+        <h1>Dashboard do Agricultor - Edição de Tarefa de Máquina</h1>
     </header>
 
     <div class="container">
         <!-- Formulário de Agregação de Tarefa -->
         <div class="form-card">
 
-            <h2>Editar Tarefa de Funcionário</h2>
+            <h2>Editar Tarefa de Máquina</h2>
 
-            <form action="{% url 'editar_tarefa_funcionario' tarefa.id %}" method="POST" id="form-tarefa">
+            <form action="{% url 'editar_tarefa_maquina' tarefa.id %}" method="POST" id="form-tarefa">
 
                 {% csrf_token %}
 
-                <label for="funcionario">Funcionário</label>
-                <select name="funcionario" id="funcionario" required>
-                    <option value="{{ tarefa.funcionario.id }}" selected>{{ tarefa.funcionario.nome }}</option>
-                    {% for i in funcionario %}
+                <label for="maquina">Funcionário</label>
+                <select name="maquina" id="maquina" required>
+                    <option value="{{ tarefa.maquina.id }}" selected>{{ tarefa.maquina.nome }}</option>
+                    {% for i in maquina %}
                     <option value="{{ i.id }}">{{ i.nome }}</option>
                     {% endfor %}
                 </select>
@@ -41,6 +41,7 @@
                 <button type="submit">Editar Tarefa</button>
 
             </form>
+
         </div>
 
         <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>

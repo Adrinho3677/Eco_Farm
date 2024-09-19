@@ -266,3 +266,58 @@ def editar_tarefa_funcionario(request, id):
     funcionario = Funcionario.objects.all()
     
     return render(request, 'editar_tarefa_funcionario.html', {'tarefa': tarefa, 'funcionario':funcionario})
+
+@login_required
+def tarefas_maquina(request):
+
+    maquina = Maquina.objects.all()
+
+    if request.method == 'POST':
+
+        maquina_1 = request.POST.get('maquina')
+        descricao = request.POST.get('tarefa')
+        data = request.POST.get('data_tarefa')
+
+        TarefaMaquina.objects.create(maquina_id=maquina_1, descricao=descricao, data_inicio=data)
+
+    
+    tarefa = TarefaMaquina.objects.all()
+
+    return render(request, 'tarefas_maquina.html', {'maquina':maquina, 'tarefa':tarefa})
+
+@login_required
+def tarefas_maquina_excluir(request, id):
+
+    tarefa = TarefaMaquina.objects.get(id=id)
+    tarefa.delete()
+
+    return redirect('tarefas_maquina')
+
+@login_required
+def editar_tarefa_maquina(request, id):
+
+    tarefa = TarefaMaquina.objects.get(id=id)
+
+    if request.method == 'POST':
+
+        maquina_1 = request.POST.get('maquina')
+        descricao = request.POST.get('tarefa')
+        data = request.POST.get('data_tarefa')
+
+        print(maquina_1)
+        print(descricao)
+        print(data)
+
+        if maquina_1 and descricao and data:
+
+            tarefa.maquina_id = maquina_1
+            tarefa.descricao = descricao
+            tarefa.data_inicio = data
+
+            tarefa.save()
+
+            return redirect('tarefas_maquina')
+
+    maquina = Maquina.objects.all()
+    
+    return render(request, 'editar_tarefa_maquina.html', {'tarefa': tarefa, 'maquina':maquina})

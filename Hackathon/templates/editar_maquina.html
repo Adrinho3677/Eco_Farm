@@ -23,14 +23,13 @@
 
                 {% csrf_token %}
 
-                <label for="maquina">Máquina Agrícola</label>
+                <label for="maquina">Tipo de Máquina Agrícola</label>
                 <select id="tipo_maquina" name="tipo_maquina" required>
                     <option value="{{maquina.tipo}}" selected>{{maquina.tipo}}</option>
                     <option value="Trator">Trator</option>
                     <option value="Colheitadeira">Colheitadeira</option>
                     <option value="Plantadeira">Plantadeira</option>
                     <option value="Pulverizador">Pulverizador</option>
-                    <option value="Pulverizador">Escravo</option>
                 </select>
 
                 <label for="nome">Nome da Máquina</label>
@@ -47,7 +46,7 @@
 
         </div>
 
-        <button> <a class="links" href="{% url 'index' %}">Voltar</a> </button>
+        <a class="btn" href="{% url 'index' %}">Voltar à Página Inicial</a>
 
     </div>
 
