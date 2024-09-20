@@ -47,8 +47,8 @@
             <ul>
                 {% for i in tarefa %}
                     <li>{{ i.maquina.nome }} | {{ i.descricao }} |
-                        <a class="btn" href="{% url 'tarefas_maquina_excluir' i.id %}">Excluir</a>
-                        <a class="btn" href="{% url 'editar_tarefa_maquina' i.id %}">Editar</a>
+                        <a class="btn" href="{% url 'tarefas_maquina_excluir' i.id %}">Finalizar Tarefa</a>
+                        <a class="btn" href="{% url 'editar_tarefa_maquina' i.id %}">Editar Tarefa</a>
                     </li>
                 {% endfor %}
             </ul>
